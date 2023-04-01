@@ -5,39 +5,7 @@ import sklearn
 import random
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-
-# Preemptying Strealit default footer
-footer="""<style>
-a:link , a:visited{
-color: blue;
-background-color: transparent;
-text-decoration: underline;
-}
-
-a:hover,  a:active {
-color: red;
-background-color: transparent;
-text-decoration: underline;
-}
-
-.footer {
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-color: white;
-text-align: center;
-}
-</style>
-<div class="footer">
-<p>Developed with <span style = "color:red">❤</span> by <a ' href="https://www.linkedin.com/in/tapanvijay/" target="_blank"><span style = "color:white">Tapan Vijayvergiya</span></a></p>
-</div>
-"""
-st.markdown(footer,unsafe_allow_html=True)
-
-
-
-st.title("Encrypted Text Decryption App")
+st.title("Cipher-Encrypted Text Decryption App")
 plain_text_df = pd.read_csv('test.csv')
 
 
@@ -46,13 +14,13 @@ def random_index(plain_text_df):
 
 random_cipher_df_index = random_index(plain_text_df)
 
-if st.button('Generate a new sample Cipher Text'):
+if st.button('Generate  sample Cipher Text'):
   random_cipher_df_index = random_index(plain_text_df)
 
 
 st.dataframe(plain_text_df.iloc[random_cipher_df_index])
 
-st.write("Use this cipher text to test the application")
+st.write("Use Below cipher text")
 st.text(plain_text_df.ciphertext[random_cipher_df_index])
 
 cipher_text = st.text_area( label = "Enter Encrypted Text to Decrypt")
@@ -176,4 +144,4 @@ dec_text = decrypted_text_switch(cipher_text,cipher_class)
 
 if len(cipher_text) > 0:
   
-  st.write("The Encryption level is :", str(cipher_class),"and the decrypted text is \" ",dec_text,"\"")
+  st.write("Encryption level is :", str(cipher_class),"and  Associated decrypted text  \" ",dec_text,"\"")
